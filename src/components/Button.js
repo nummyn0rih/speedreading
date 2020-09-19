@@ -18,7 +18,7 @@ const CommonButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0.5rem 0;
-  width: ${({ size }) => size || '10rem'};
+  width: ${({ size }) => size || 'auto'};
 
   color: #fff;
   background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%),
@@ -32,8 +32,8 @@ const CommonButton = styled.button`
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
 
-  font-family: 'Raleway', 'Roboto', 'Ubuntu', sans-serif;
-  font-weight: 600;
+  font-family: inherit;
+  font-weight: inherit;
   text-transform: uppercase;
   cursor: pointer;
   outline: none;
@@ -46,11 +46,3 @@ const CommonButton = styled.button`
 const Button = prefix(CommonButton);
 
 export default Button;
-
-// const PrefixedButton = prefix(CommonButton);
-
-// export default function Button({ theme, size, children }) {
-//   console.log(theme);
-//   console.log(size);
-//   return <PrefixedButton>{children}</PrefixedButton>;
-// }
