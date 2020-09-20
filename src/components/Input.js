@@ -14,8 +14,7 @@ const StyledInput = styled.input.attrs((props) => ({
   color: rgba(31, 32, 65, 0.5);
   outline: none;
 
-  font-family: inherit;
-  font-weight: inherit;
+  font: inherit;
   font-size: 1rem;
 
   &:hover,

@@ -17,7 +17,7 @@ const CommonButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   width: ${({ size }) => size || 'auto'};
 
   color: #fff;
@@ -32,8 +32,7 @@ const CommonButton = styled.button`
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
 
-  font-family: inherit;
-  font-weight: inherit;
+  font: inherit;
   text-transform: uppercase;
   cursor: pointer;
   outline: none;

@@ -32,6 +32,9 @@ export default function () {
           </Button>
         )}
       </div>
+      <Button onClick={toggle} green>
+        Обновить
+      </Button>
       <Button green size="2.5rem">
         <QuestionIcon />
       </Button>
