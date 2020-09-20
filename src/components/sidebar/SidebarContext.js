@@ -7,7 +7,7 @@ export const useSidebarContext = () => {
 };
 
 export const SidebarProvider = ({ children }) => {
-  const [sidebar, setSidebarVisible] = useState(false);
+  const [sidebar, setSidebarVisible] = useState(true);
 
   const toggle = () => setSidebarVisible((prev) => !prev);
 
