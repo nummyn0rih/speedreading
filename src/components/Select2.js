@@ -94,7 +94,6 @@ const StyledWrapper = styled.div`
       position: absolute;
       width: 100%;
       padding: 0;
-      list-style: none;
       opacity: 0;
 
       animation-name: HideList;

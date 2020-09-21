@@ -6,7 +6,6 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  list-style: none;
   width: 100%;
   font-family: 'Titillium Web', sans-serif;
 
