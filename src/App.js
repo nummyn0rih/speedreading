@@ -10,6 +10,7 @@ import {
   SidebarProvider,
   useSidebarContext,
 } from './components/sidebar/SidebarContext';
+import Button from './components/Button';
 import Select from './components/Select';
 
 const StyledApp = styled.div`
@@ -40,7 +41,15 @@ function App() {
 
   return (
     <PrefixedApp sidebarVisible={visible}>
-      <Header />
+      <Header>
+        <div>
+          {!visible && (
+            <Button theme="green" icon="settings" onClick={toggle} green />
+          )}
+        </div>
+        <Button theme="green" label="Обновить" onClick={toggle} />
+        <Button theme="green" icon="question-mark" />
+      </Header>
       <Sidebar>
         <SidebarItem theme="green" icon="close" onClick={toggle} />
         <SidebarItem theme="white" label="Таблицы Шульте" active>
