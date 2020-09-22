@@ -12,10 +12,10 @@ const StyledTextField = styled.div`
 
 const PrefixedTextField = prefix(StyledTextField);
 
-export default function TextField({ type, id, label, placeholder, name }) {
+export default function TextField({ type, id, value, placeholder, name }) {
   return (
     <PrefixedTextField>
-      <Label htmlFor={id}>{label}</Label>
+      <Label htmlFor={id}>{value}</Label>
       <Input type={type} id={id} placeholder={placeholder} name={name} />
     </PrefixedTextField>
   );

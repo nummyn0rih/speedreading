@@ -127,10 +127,10 @@ const StyledWrapper = styled.div`
 
 const Wrapper = prefix(StyledWrapper);
 
-export default function Select({ arr, label, name }) {
+export default function Select({ arr, value, name }) {
   return (
     <Wrapper>
-      <Label>{label}</Label>
+      <Label>{value}</Label>
       <div class="select-box">
         <div class="select-box__current" tabindex="1">
           {arr.map(({ option, value, id, check }) => (

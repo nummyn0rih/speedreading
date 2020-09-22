@@ -12,10 +12,10 @@ const StyledSelect = styled.div`
 
 const PrefixedSelect = prefix(StyledSelect);
 
-export default function Select({ type, id, label, placeholder, name }) {
+export default function Select({ type, id, value, placeholder, name }) {
   return (
     <PrefixedSelect>
-      <Label>{label}</Label>
+      <Label>{value}</Label>
       <Input as="select">
         <option style={{ padding: '1rem' }} value="3">
           3 x 3

@@ -104,10 +104,10 @@ const StyledWrapper = styled.div`
 
 const Wrapper = prefix(StyledWrapper);
 
-export default function Select({ arr, label, name }) {
+export default function Select({ arr, value, name }) {
   return (
     <Wrapper>
-      <Label>{label}</Label>
+      <Label>{value}</Label>
       <div className="form-input-select">
         <select required>
           <option value="" hidden>

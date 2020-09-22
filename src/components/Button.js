@@ -51,11 +51,11 @@ export const PurpleButton = prefix(StyledPurpleButton);
 export const WhiteButton = prefix(StyledWhiteButton);
 export const GreenButton = prefix(StyledGreenButton);
 
-export default function Button({ icon, label, theme, onClick, ...props }) {
+export default function Button({ icon, value, theme, onClick, ...props }) {
   const inner = (
     <>
       {icon && <Icon icon={icon} />}
-      {label && <span>{label}</span>}
+      {value && <span>{value}</span>}
     </>
   )
 

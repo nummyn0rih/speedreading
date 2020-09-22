@@ -28,6 +28,7 @@ const StyledApp = styled.div`
     'footer footer footer footer';
     `;
   }};
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
   height: 100vh;
   padding: 0.5rem;
@@ -47,19 +48,19 @@ function App() {
             <Button theme="green" icon="settings" onClick={toggle} green />
           )}
         </div>
-        <Button theme="green" label="Обновить" onClick={toggle} />
+        <Button theme="green" value="Обновить" onClick={toggle} />
         <Button theme="green" icon="question-mark" />
       </Header>
       <Sidebar>
         <SidebarItem theme="green" icon="close" onClick={toggle} />
-        <SidebarItem theme="white" label="Таблицы Шульте" active>
-          <Select id="size" label="Размер таблицы" />
-          <Select id="type" label="Тип таблицы" />
-          {/* <Select2 label="Размер таблицы" name="size" arr={arr1} />
-            <Select2 label="Тип таблицы" name="type" arr={arr2} /> */}
+        <SidebarItem theme="white" value="Таблицы Шульте" size="100%" active>
+          <Select id="size" value="Размер таблицы" />
+          <Select id="type" value="Тип таблицы" />
+          {/* <Select2 value="Размер таблицы" name="size" arr={arr1} />
+            <Select2 value="Тип таблицы" name="type" arr={arr2} /> */}
         </SidebarItem>
-        <SidebarItem label="Клиновидные таблицы" size="100%" />
-        <SidebarItem label="Кольца Ландольта" />
+        <SidebarItem value="Клиновидные таблицы" size="100%" />
+        <SidebarItem value="Кольца Ландольта" size="100%" />
       </Sidebar>
       <Main />
     </PrefixedApp>
