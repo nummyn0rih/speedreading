@@ -3,14 +3,9 @@ import styled from 'styled-components';
 import { prefix } from 'inline-style-prefixer';
 
 import { useSidebarContext } from './SidebarContext';
-import Button from '../Button';
-import CloseIcon from '../icons/CloseIcon';
 import { Shadow, Down } from '../styled';
-import Select from '../Select';
-import Select2 from '../Select2';
-import Select3 from '../Select3';
 
-const style = styled.aside`
+const StyledSidebar = styled.aside`
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
@@ -37,7 +32,7 @@ const style = styled.aside`
   }
 `;
 
-const Sidebar = prefix(style);
+const Sidebar = prefix(StyledSidebar);
 
 const arr1 = [
   // { size: '3 x 3', value: '3', id: 'size-0', check: false },
@@ -53,27 +48,16 @@ const arr2 = [
   { option: 'Буквенная', value: 'char', id: 'type-2', check: false },
 ];
 
-export default function () {
-  const { visible, toggle } = useSidebarContext();
+export default function (props) {
+  const { visible } = useSidebarContext();
 
   if (!visible) return null;
 
   return (
     <Sidebar>
-      <Button onClick={toggle} green size="2.5rem">
-        <CloseIcon />
-      </Button>
-      <Button white>Таблицы Шульте</Button>
-      <div className="line">
-        <Select id="size" label="Размер таблицы" />
-        <Select id="type" label="Тип таблицы" />
-      </div>
-      <div className="line" style={{ margin: '20px 0' }}>
-        <Select2 label="Размер таблицы" name="size" arr={arr1} />
-        <Select2 label="Тип таблицы" name="type" arr={arr2} />
-      </div>
-      <Button>Клиновидные таблицы</Button>
-      <Button>Кольца Ландольта</Button>
+      <nav>
+        <ul>{props.children}</ul>
+      </nav>
     </Sidebar>
   );
 }
