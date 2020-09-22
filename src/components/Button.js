@@ -1,17 +1,8 @@
-// import React from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import { prefix } from 'inline-style-prefixer';
 
-const whiteTheme = css`
-  color: #bc9cff;
-  background: linear-gradient(to right, white, white),
-    linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-`;
-
-const greenTheme = css`
-  background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%),
-    linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-`;
+import Icon from './Icon';
 
 const CommonButton = styled.button`
   display: flex;
@@ -21,16 +12,8 @@ const CommonButton = styled.button`
   width: ${({ size }) => size || 'auto'};
 
   color: #fff;
-  background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%),
-    linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-
-  ${({ white }) => white && whiteTheme}
-  ${({ green }) => green && greenTheme}
-
   border: 2px solid transparent;
   border-radius: 22px;
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
 
   font: inherit;
   text-transform: uppercase;
@@ -42,6 +25,51 @@ const CommonButton = styled.button`
   }
 `;
 
-const Button = prefix(CommonButton);
+const StyledPurpleButton = styled(CommonButton)`
+  background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%),
+    linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+`;
 
-export default Button;
+const StyledWhiteButton = styled(CommonButton)`
+  color: #bc9cff;
+  background: linear-gradient(to right, white, white),
+    linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+`;
+
+const StyledGreenButton = styled(CommonButton)`
+  background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%),
+    linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+`;
+
+export const PurpleButton = prefix(StyledPurpleButton);
+export const WhiteButton = prefix(StyledWhiteButton);
+export const GreenButton = prefix(StyledGreenButton);
+
+export default function Button({ icon, label, theme, onClick, ...props }) {
+  const inner = (
+    <>
+      {icon && <Icon icon={icon} />}
+      {label && <span>{label}</span>}
+    </>
+  )
+
+  switch (theme) {
+    case 'white': return (
+      <WhiteButton onClick={onClick} {...props} >{inner}</WhiteButton>
+    )
+
+    case 'green': return (
+      <GreenButton onClick={onClick} {...props} >{inner}</GreenButton>
+    )
+
+    default: return (
+      <PurpleButton onClick={onClick} {...props} >{inner}</PurpleButton>
+    )
+  }
+}
