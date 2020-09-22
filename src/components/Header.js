@@ -4,8 +4,6 @@ import { prefix } from 'inline-style-prefixer';
 
 import { useSidebarContext } from './sidebar/SidebarContext';
 import Button from './Button';
-import SettingsIcon from './icons/SettingsIcon';
-import QuestionIcon from './icons/QuestionIcon';
 import { Shadow } from './styled';
 
 const style = styled.header`
@@ -27,17 +25,11 @@ export default function () {
     <Header>
       <div>
         {!visible && (
-          <Button onClick={toggle} green size="2.5rem">
-            <SettingsIcon />
-          </Button>
+          <Button theme="green" icon="settings" onClick={toggle} green />
         )}
       </div>
-      <Button onClick={toggle} green>
-        Обновить
-      </Button>
-      <Button green size="2.5rem">
-        <QuestionIcon />
-      </Button>
+      <Button theme="green" label="Обновить" onClick={toggle} />
+      <Button theme="green" icon="question-mark" />
     </Header>
   );
 }
