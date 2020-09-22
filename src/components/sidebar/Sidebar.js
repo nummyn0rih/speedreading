@@ -11,25 +11,12 @@ const StyledSidebar = styled.aside`
   flex-direction: column;
   /* justify-content: space-between; */
   align-items: stretch;
-  padding: 2rem;
+  padding: 0.5rem 2rem;
   animation: ${Down} 0.5s 1 cubic-bezier(0.49, 0.91, 0.52, 1.36);
   ${Shadow}
 
   font-family: 'Raleway', 'Roboto', 'Ubuntu', sans-serif;
   font-weight: 600;
-
-  Button {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .line {
-    display: flex;
-    justify-content: space-between;
-  }
-  .line > div {
-    width: 47.5%;
-  }
 `;
 
 const Sidebar = prefix(StyledSidebar);

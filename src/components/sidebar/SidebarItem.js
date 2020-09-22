@@ -4,7 +4,9 @@ import { prefix } from 'inline-style-prefixer';
 
 import Button from '../Button';
 
-const StyledSidebarItem = styled.li``;
+const StyledSidebarItem = styled.li`
+  margin-bottom: 1.5rem;
+`;
 
 const SidebarItem = prefix(StyledSidebarItem);
 
