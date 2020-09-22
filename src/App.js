@@ -5,12 +5,14 @@ import { prefix } from 'inline-style-prefixer';
 import Main from './components/Main';
 import Header from './components/Header';
 import Sidebar from './components/sidebar/Sidebar';
+import SidebarItem from './components/sidebar/SidebarItem';
 import {
   SidebarProvider,
   useSidebarContext,
 } from './components/sidebar/SidebarContext';
+import Select from './components/Select';
 
-const style = styled.div`
+const StyledApp = styled.div`
   display: grid;
   grid-template-areas: ${({ sidebarVisible }) => {
     if (sidebarVisible)
@@ -31,17 +33,27 @@ const style = styled.div`
   background: #e5e5e5;
 `;
 
-const StyledApp = prefix(style);
+const PrefixedApp = prefix(StyledApp);
 
 function App() {
-  const sidebar = useSidebarContext();
+  const { visible, toggle } = useSidebarContext();
 
   return (
-    <StyledApp sidebarVisible={sidebar.visible}>
+    <PrefixedApp sidebarVisible={visible}>
       <Header />
-      <Sidebar />
+      <Sidebar>
+        <SidebarItem theme="green" icon="close" onClick={toggle} />
+        <SidebarItem theme="white" label="Таблицы Шульте" active>
+          <Select id="size" label="Размер таблицы" />
+          <Select id="type" label="Тип таблицы" />
+          {/* <Select2 label="Размер таблицы" name="size" arr={arr1} />
+            <Select2 label="Тип таблицы" name="type" arr={arr2} /> */}
+        </SidebarItem>
+        <SidebarItem label="Клиновидные таблицы" size="100%" />
+        <SidebarItem label="Кольца Ландольта" />
+      </Sidebar>
       <Main />
-    </StyledApp>
+    </PrefixedApp>
   );
 }
 
