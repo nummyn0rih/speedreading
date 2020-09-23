@@ -57,19 +57,28 @@ export default function Button({ icon, value, theme, onClick, ...props }) {
       {icon && <Icon icon={icon} />}
       {value && <span>{value}</span>}
     </>
-  )
+  );
 
   switch (theme) {
-    case 'white': return (
-      <WhiteButton onClick={onClick} {...props} >{inner}</WhiteButton>
-    )
+    case 'white':
+      return (
+        <WhiteButton onClick={onClick} {...props}>
+          {inner}
+        </WhiteButton>
+      );
 
-    case 'green': return (
-      <GreenButton onClick={onClick} {...props} >{inner}</GreenButton>
-    )
+    case 'green':
+      return (
+        <GreenButton onClick={onClick} {...props}>
+          {inner}
+        </GreenButton>
+      );
 
-    default: return (
-      <PurpleButton onClick={onClick} {...props} >{inner}</PurpleButton>
-    )
+    default:
+      return (
+        <PurpleButton onClick={onClick} {...props}>
+          {inner}
+        </PurpleButton>
+      );
   }
 }

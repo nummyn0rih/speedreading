@@ -28,7 +28,7 @@ export default function () {
           <Button theme="green" icon="settings" onClick={toggle} green />
         )}
       </div>
-      <Button theme="green" value="Обновить" onClick={() => { }} />
+      <Button theme="green" value="Обновить" onClick={() => {}} />
       <Button theme="green" icon="question-mark" />
     </Header>
   );

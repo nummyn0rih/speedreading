@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { prefix } from 'inline-style-prefixer';
 
+import { useSidebarContext } from './SidebarContext';
 import Button from '../Button';
 
 const StyledSidebarItem = styled.li`
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 `;
 
 const SidebarItem = prefix(StyledSidebarItem);
 
-export default function ({ children, onClick, ...props }) {
-  const [open, setOpen] = useState(false);
+export default function ({ tabName, children, onClick, ...props }) {
+  const { activeTab } = useSidebarContext();
+
+  const active = tabName === activeTab;
 
   return (
     <SidebarItem>
-      <Button onClick={onClick || (() => setOpen(!open))} {...props} />
-      {open && children}
+      <Button theme={active && 'white'} onClick={onClick} {...props} />
+      {active && children}
     </SidebarItem>
   );
 }

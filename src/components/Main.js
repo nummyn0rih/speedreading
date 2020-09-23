@@ -3,7 +3,13 @@ import styled from 'styled-components';
 import { prefix } from 'inline-style-prefixer';
 
 import SchulteTable from './SchulteTable';
-import WedgeShapedTable from './WedgeShapedTable';
+import WedgeTable from './WedgeTable';
+import {
+  SCHULTE,
+  WEDGE,
+  LANDOLT,
+  useSidebarContext,
+} from './sidebar/SidebarContext';
 
 const style = styled.main`
   grid-area: content;
@@ -15,9 +21,13 @@ const style = styled.main`
 const Main = prefix(style);
 
 export default function () {
+  const { activeTab } = useSidebarContext();
+
   return (
     <Main>
-      <SchulteTable />
+      {activeTab === SCHULTE && <SchulteTable />}
+      {activeTab === WEDGE && <WedgeTable />}
+      {activeTab === LANDOLT && <p>Здесь будут кольца Ландольта</p>}
     </Main>
   );
 }

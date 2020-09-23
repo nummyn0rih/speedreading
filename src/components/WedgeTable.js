@@ -55,7 +55,7 @@ const lines = startOfLine.reduce((acc, elem, index) => {
   return [...acc, newLine];
 }, []);
 
-export default function WedgeShapedTable() {
+export default function WedgeTable() {
   return (
     <Ul>
       {lines.map((elem) => (
