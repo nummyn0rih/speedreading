@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { prefix } from 'inline-style-prefixer';
 
+import SidebarItem from './SidebarItem';
 import { useSidebarContext } from './SidebarContext';
+import Select from '../Select';
+
 import { Shadow, Down } from '../styled';
 
 const StyledSidebar = styled.aside`
@@ -36,14 +39,24 @@ const arr2 = [
 ];
 
 export default function (props) {
-  const { visible } = useSidebarContext();
+  const { visible, toggle } = useSidebarContext();
 
   if (!visible) return null;
 
   return (
     <Sidebar>
       <nav>
-        <ul>{props.children}</ul>
+        <ul>
+          <SidebarItem theme="green" icon="close" onClick={toggle} />
+          <SidebarItem theme="white" value="Таблицы Шульте" size="100%" active>
+            <Select id="size" value="Размер таблицы" />
+            <Select id="type" value="Тип таблицы" />
+            {/* <Select2 value="Размер таблицы" name="size" arr={arr1} />
+            <Select2 value="Тип таблицы" name="type" arr={arr2} /> */}
+          </SidebarItem>
+          <SidebarItem value="Клиновидные таблицы" size="100%" />
+          <SidebarItem value="Кольца Ландольта" size="100%" />
+        </ul>
       </nav>
     </Sidebar>
   );
