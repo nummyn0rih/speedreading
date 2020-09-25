@@ -8,6 +8,7 @@ import Select from '../Select';
 
 import { Shadow, Down } from '../styled';
 import Button from '../Button';
+import Dropdown from '../Dropdown';
 
 const StyledSidebar = styled.aside`
   grid-area: sidebar;
@@ -63,8 +64,7 @@ export default function (props) {
           >
             {/* <Select id="size" value="Размер таблицы" />
             <Select id="type" value="Тип таблицы" /> */}
-            <p>lorem</p>
-            <p>ipsum</p>
+            <Dropdown />
             {/* <Select2 value="Размер таблицы" name="size" arr={arr1} />
             <Select2 value="Тип таблицы" name="type" arr={arr2} /> */}
           </SidebarItem>

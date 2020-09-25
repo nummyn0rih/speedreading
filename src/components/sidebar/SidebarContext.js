@@ -24,7 +24,7 @@ const reducer = (state, action) => {
 };
 
 export const SidebarProvider = ({ children }) => {
-  const [sidebar, setSidebarVisible] = useState(false);
+  const [sidebar, setSidebarVisible] = useState(true);
   const toggle = () => setSidebarVisible((prev) => !prev);
 
   const [state, dispatch] = useReducer(reducer, { active: SCHULTE });

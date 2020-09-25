@@ -4,13 +4,13 @@ import { prefix } from 'inline-style-prefixer';
 
 import { Shadow } from './styled';
 
-const StyledTableWrapper = styled.article`
+const StyledTableWrapper = styled.section`
   height: max-content;
   padding: 2rem;
   ${Shadow}
 `;
 
-const StyledTable = styled.section`
+const StyledTable = styled.article`
   display: grid;
   grid-template: repeat(5, 80px) / repeat(5, 80px);
   grid-gap: 5px;
