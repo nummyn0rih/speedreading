@@ -16,6 +16,7 @@ const CommonButton = styled.button`
   border-radius: 22px;
 
   font: inherit;
+  font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;
   outline: none;
@@ -33,6 +34,7 @@ const StyledPurpleButton = styled(CommonButton)`
 `;
 
 const StyledWhiteButton = styled(CommonButton)`
+  font-weight: 600;
   color: #bc9cff;
   background: linear-gradient(to right, white, white),
     linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);

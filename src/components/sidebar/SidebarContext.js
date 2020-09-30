@@ -1,14 +1,11 @@
 import React, { useContext, useState, useReducer } from 'react';
+import { SCHULTE, WEDGE, LANDOLT } from '../../constants';
 
 const SidebarContext = React.createContext();
 
 export const useSidebarContext = () => {
   return useContext(SidebarContext);
 };
-
-export const SCHULTE = 'schulteTables';
-export const WEDGE = 'wedgeTables';
-export const LANDOLT = 'landoltRings';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -24,7 +21,7 @@ const reducer = (state, action) => {
 };
 
 export const SidebarProvider = ({ children }) => {
-  const [sidebar, setSidebarVisible] = useState(true);
+  const [sidebar, setSidebarVisible] = useState(false);
   const toggle = () => setSidebarVisible((prev) => !prev);
 
   const [state, dispatch] = useReducer(reducer, { active: SCHULTE });

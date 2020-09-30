@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
 const DropdownMenu = styled.div`
@@ -64,6 +64,13 @@ const StyledDropdownItem = styled.button`
   transition: background 500ms;
   cursor: pointer;
 
+  ${({ active }) =>
+    active &&
+    css`
+      color: rgba(31, 32, 65, 0.75);
+      background: #f4f4f5;
+    `}
+
   &:hover,
   &:focus {
     color: rgba(31, 32, 65, 0.75);
@@ -71,13 +78,13 @@ const StyledDropdownItem = styled.button`
   }
 `;
 
-export default function () {
+export default function ({ data }) {
   const [activeMenu, setActiveMenu] = useState('main');
   const [menuHeight, setMenuHeight] = useState(null);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
+    setMenuHeight(dropdownRef.current?.firstChild?.offsetHeight);
   }, []);
 
   function calcHeight(el) {
@@ -85,15 +92,18 @@ export default function () {
     setMenuHeight(height);
   }
 
-  function DropdownItem(props) {
+  function DropdownItem({ children, goToMenu, ...props }) {
     return (
       <StyledDropdownItem
-        onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
+        onClick={() => goToMenu && setActiveMenu(goToMenu)}
+        {...props}
       >
-        <span>{props.children}</span>
+        <span>{children}</span>
       </StyledDropdownItem>
     );
   }
+
+  console.log(data);
 
   return (
     <DropdownMenu style={{ height: menuHeight }} ref={dropdownRef}>
@@ -105,54 +115,34 @@ export default function () {
         onEnter={calcHeight}
       >
         <Menu>
-          <DropdownItem goToMenu="size">Размер таблицы</DropdownItem>
-          <DropdownItem goToMenu="type">Тип таблицы</DropdownItem>
-          <DropdownItem goToMenu="view">Стиль таблицы</DropdownItem>
+          {data.map((menuItem) => (
+            <DropdownItem goToMenu={menuItem.id} key={`menu-${menuItem.id}`}>
+              {menuItem.name}
+            </DropdownItem>
+          ))}
         </Menu>
       </CSSTransition>
 
-      <CSSTransition
-        in={activeMenu === 'size'}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}
-      >
-        <Menu>
-          <DropdownItem goToMenu="main">back to settings</DropdownItem>
-          <DropdownItem>4 x 4</DropdownItem>
-          <DropdownItem>5 x 5</DropdownItem>
-          <DropdownItem>6 x 6</DropdownItem>
-        </Menu>
-      </CSSTransition>
+      {data.map((menu) => (
+        <CSSTransition
+          in={activeMenu === menu.id}
+          timeout={500}
+          classNames="menu-secondary"
+          unmountOnExit
+          onEnter={calcHeight}
+          key={menu.id}
+        >
+          <Menu>
+            <DropdownItem goToMenu="main">back to settings</DropdownItem>
 
-      <CSSTransition
-        in={activeMenu === 'type'}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}
-      >
-        <Menu>
-          <DropdownItem goToMenu="main">back to settings</DropdownItem>
-          <DropdownItem>Числовая</DropdownItem>
-          <DropdownItem>Буквенная</DropdownItem>
-        </Menu>
-      </CSSTransition>
-
-      <CSSTransition
-        in={activeMenu === 'view'}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}
-      >
-        <Menu>
-          <DropdownItem goToMenu="main">back to settings</DropdownItem>
-          <DropdownItem>Классический</DropdownItem>
-          <DropdownItem>Без рамок</DropdownItem>
-        </Menu>
-      </CSSTransition>
+            {menu.children.map((item) => (
+              <DropdownItem key={item.id} active={menu.current === item.id}>
+                {item.value}
+              </DropdownItem>
+            ))}
+          </Menu>
+        </CSSTransition>
+      ))}
     </DropdownMenu>
   );
 }

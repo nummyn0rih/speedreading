@@ -4,15 +4,14 @@ import { prefix } from 'inline-style-prefixer';
 
 import SchulteTable from './SchulteTable';
 import WedgeTable from './WedgeTable';
-import {
-  SCHULTE,
-  WEDGE,
-  LANDOLT,
-  useSidebarContext,
-} from './sidebar/SidebarContext';
+import { useSidebarContext } from './sidebar/SidebarContext';
+import { SCHULTE, WEDGE, LANDOLT } from '../constants';
 
 const style = styled.main`
   grid-area: content;
+  flex: 1 1 auto;
+  align-items: center;
+
   display: flex;
   justify-content: center;
   align-items: flex-start;

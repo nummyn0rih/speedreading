@@ -12,8 +12,10 @@ const style = styled.header`
   justify-content: space-between;
   align-items: center;
   height: max-content;
+  margin-bottom: 0.5rem;
   padding: 0.5rem 2rem;
   ${Shadow}
+  transition: all 500ms ease;
 `;
 
 const Header = prefix(style);
@@ -28,7 +30,7 @@ export default function () {
           <Button theme="green" icon="settings" onClick={toggle} green />
         )}
       </div>
-      <Button theme="green" value="Обновить" onClick={() => {}} />
+      <Button theme="green" value="Обновить" onClick={toggle} />
       <Button theme="green" icon="question-mark" />
     </Header>
   );
