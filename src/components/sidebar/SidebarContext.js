@@ -1,5 +1,6 @@
 import React, { useContext, useState, useReducer } from 'react';
 import { SCHULTE, WEDGE, LANDOLT } from '../../constants';
+import data from '../../api';
 
 const SidebarContext = React.createContext();
 
@@ -28,6 +29,8 @@ export const SidebarProvider = ({ children }) => {
   const showSchulte = () => dispatch({ type: SCHULTE });
   const showWedge = () => dispatch({ type: WEDGE });
   const showLandolt = () => dispatch({ type: LANDOLT });
+
+  const [menu, setMenu] = useState(data);
 
   return (
     <SidebarContext.Provider

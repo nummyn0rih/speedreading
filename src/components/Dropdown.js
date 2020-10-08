@@ -12,6 +12,10 @@ const DropdownMenu = styled.div`
   overflow: hidden;
   transition: height 500ms ease;
 
+  @media (max-width: 769px) {
+    margin: 1rem 1rem 0.5rem;
+  }
+
   /* CSSTransition classes */
   .menu-primary-enter {
     position: absolute;

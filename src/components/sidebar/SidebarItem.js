@@ -6,7 +6,11 @@ import { useSidebarContext } from './SidebarContext';
 import Button from '../Button';
 
 const StyledSidebarItem = styled.li`
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem;
+
+  @media (max-width: 769px) {
+    margin-top: 0.5rem;
+  } */
 `;
 
 const SidebarItem = prefix(StyledSidebarItem);

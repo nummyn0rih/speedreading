@@ -15,27 +15,37 @@ const StyledSidebar = styled.aside`
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* align-items: stretch; */
+  gap: 2rem;
   padding: 0.5rem 2rem;
   ${Shadow}
   font-family: 'Raleway', 'Roboto', 'Ubuntu', sans-serif;
   font-weight: 600;
-`;
 
-// const StyledSidebar = styled.aside`
-//   position: absolute;
-//   width: -webkit-fill-available;
-//   height: -webkit-fill-available;
-//   display: flex;
-//   flex-direction: column;
-//   margin-right: 0.5rem;
-//   padding: 0.5rem 2rem;
-//   ${Shadow}
-//   font-family: 'Raleway', 'Roboto', 'Ubuntu', sans-serif;
-//   font-weight: 600;
-//   transition: all 500ms ease;
-// `;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @media (max-width: 769px) {
+    height: fit-content;
+
+    .close {
+      display: none;
+    }
+    nav {
+      width: 50%;
+    }
+    ul {
+      gap: 0.5rem;
+    }
+  }
+  @media (max-width: 426px) {
+    nav {
+      width: 100%;
+    }
+  }
+`;
 
 const Sidebar = prefix(StyledSidebar);
 
@@ -48,12 +58,17 @@ export default function (props) {
     showLandolt,
   } = useSidebarContext();
 
-  // if (!visible) return <div></div>;
   if (!visible) return null;
 
   return (
     <Sidebar>
-      <Button theme="green" icon="close" size="2.5rem" onClick={toggle} />
+      <Button
+        className="close"
+        theme="green"
+        icon="close"
+        size="2.5rem"
+        onClick={toggle}
+      />
       <nav>
         <ul>
           <SidebarItem

@@ -12,10 +12,23 @@ const style = styled.header`
   justify-content: space-between;
   align-items: center;
   height: max-content;
-  margin-bottom: 0.5rem;
   padding: 0.5rem 2rem;
   ${Shadow}
   transition: all 500ms ease;
+
+  div {
+    width: 2.5rem;
+  }
+
+  @media (min-width: 769px) {
+    .close {
+      display: none;
+    }
+  }
+
+  @media (max-width: 376px) {
+    padding: 0.5rem 1rem;
+  }
 `;
 
 const Header = prefix(style);
@@ -26,11 +39,18 @@ export default function () {
   return (
     <Header>
       <div>
-        {!visible && (
-          <Button theme="green" icon="settings" onClick={toggle} green />
+        {visible ? (
+          <Button
+            className="close"
+            theme="green"
+            icon="close"
+            onClick={toggle}
+          />
+        ) : (
+          <Button theme="green" icon="settings" onClick={toggle} />
         )}
       </div>
-      <Button theme="green" value="Обновить" onClick={toggle} />
+      <Button theme="green" value="Обновить" onClick={() => {}} />
       <Button theme="green" icon="question-mark" />
     </Header>
   );
