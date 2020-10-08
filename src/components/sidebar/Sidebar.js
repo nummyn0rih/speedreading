@@ -13,6 +13,7 @@ import Dropdown from '../Dropdown';
 
 const StyledSidebar = styled.aside`
   grid-area: sidebar;
+  align-self: normal;
   display: flex;
   flex-direction: column;
   gap: 2rem;
